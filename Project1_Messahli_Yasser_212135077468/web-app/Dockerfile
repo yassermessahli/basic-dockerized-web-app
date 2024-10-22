@@ -1,5 +1,8 @@
 FROM python:3.9-slim
 
+# Install curl
+# RUN apt-get update && apt-get install -y curl
+
 # Set the working directory in the container
 WORKDIR /app
 
@@ -16,7 +19,8 @@ EXPOSE 5000
 CMD ["python", "app.py"]
 
 # to build the web-app image
-# docker build -t project1-client .
+# docker build -t web-app-image ./web-app
+
 
 # to run the web-app container
-# docker run --name project1-client-run -d -p 8090:5000 project1-client
+# docker run -d --name web-app --network project-net -e API_URL=http://api:8081 -p 8090:5000 web-app-image

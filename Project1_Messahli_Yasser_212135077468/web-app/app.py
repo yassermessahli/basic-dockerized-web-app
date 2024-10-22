@@ -3,8 +3,8 @@ import requests
 
 app = Flask(__name__)
 
-API_URL_ADD = 'http://api:8080/student/add'
-API_URL_ALL = 'http://api:8080/student/all'
+API_URL_ADD = 'http://api:8081/student/add'
+API_URL_ALL = 'http://api:8081/student/all'
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_student():
