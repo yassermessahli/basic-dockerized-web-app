@@ -1,0 +1,47 @@
+version: '3.8'  # Docker Compose file format version
+
+services:
+  database:
+    image: postgres  # PostgreSQL image
+    container_name: database
+    environment:
+      POSTGRES_DB: student
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"  # Host:Container port mapping
+    networks:
+      - project-net
+
+  api:
+    build: ./api  # Build from Dockerfile in ./api
+    container_name: api-run
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8081"]
+    ports:
+      - "8081:8081"
+    depends_on:
+      - database  # Ensure database starts first
+    networks:
+      - project-net
+
+  web-app:
+    build: ./web-app  # Build from Dockerfile in ./web-app
+    container_name: web-app
+    environment:
+      API_URL: http://api:8081
+    ports:
+      - "8090:5000"
+    depends_on:
+      - api  # Ensure API starts first
+    networks:
+      - project-net
+
+networks:
+  project-net:
+    driver: bridge  # Use bridge network driver
+
+# to build the images
+# docker-compose build
+
+# to run the containers
+# docker-compose up -d

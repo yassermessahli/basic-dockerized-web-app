@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Information Form</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #83e1f4;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      h2 {
+        color: #343434;
+        animation: fadeInDown 0.5s ease-in-out;
+        font-size: 2em;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      form {
+        background-color: #f0f0f0;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        width: 320px;
+        animation: fadeInUp 0.5s ease-in-out;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+      }
+
+      input[type="text"],
+      input[type="submit"] {
+        width: 100%;
+        padding: 12px 15px; /* Same horizontal padding (15px) for all inputs */
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+      }
+
+      input[type="text"]:focus {
+        border-color: #4caf50;
+        outline: none;
+      }
+
+      input[type="submit"] {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #218838;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 class="animate__animated animate__fadeInDown">
+      Student Information Form
+    </h2>
+
+    <form
+      id="studentForm"
+      action="/add"
+      method="post"
+      class="animate__animated animate__fadeInUp"
+    >
+      <label for="student_id">Student ID</label>
+      <input type="text" id="student_id" name="student_id" required />
+
+      <label for="first_name">First Name</label>
+      <input type="text" id="first_name" name="first_name" required />
+
+      <label for="last_name">Last Name</label>
+      <input type="text" id="last_name" name="last_name" required />
+
+      <label for="module_code">Module Code</label>
+      <input type="text" id="module_code" name="module_code" required />
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector("form").classList.add("visible");
+      });
+
+      document
+        .getElementById("studentForm")
+        .addEventListener("submit", function (event) {
+          let studentId = document.getElementById("student_id").value;
+          let firstName = document.getElementById("first_name").value;
+          let lastName = document.getElementById("last_name").value;
+          let moduleCode = document.getElementById("module_code").value;
+
+          if (!studentId || !firstName || !lastName || !moduleCode) {
+            alert("Please fill out all fields.");
+            event.preventDefault();
+          }
+        });
+    </script>
+  </body>
+</html>
