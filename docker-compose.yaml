@@ -15,7 +15,7 @@ services:
 
   api:
     build: ./api  # Build from Dockerfile in ./api
-    container_name: api-run
+    container_name: api
     command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8081"]
     ports:
       - "8081:8081"
@@ -44,4 +44,3 @@ networks:
 # docker-compose build
 
 # to run the containers
-# docker-compose up -d
