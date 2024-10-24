@@ -60,8 +60,8 @@ Open your web browser and navigate to the following URLs to access the frontend 
 
 ```sh
 http://localhost:8090/add
-```
 http://localhost:8090/all
+```
 
 You should see the "Student Information Form" page where you can add new student information.
 
