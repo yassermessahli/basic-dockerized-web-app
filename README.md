@@ -34,6 +34,7 @@ First, clone the project repository to your local machine using Git.
 ```sh
 git clone <repository-url>
 cd <repository-directory>
+```
 
 #### Step 3: Run the Containers
 
@@ -41,6 +42,7 @@ After building the images, use Docker Compose to start the containers. The `-d` 
 
 ```sh
 docker-compose up -d
+```
 
 #### Step 4: Verify the Containers
 
@@ -48,6 +50,7 @@ Ensure that all containers are running correctly by listing the active container
 
 ```sh
 docker ps
+```
 
 You should see three containers running: `database`, `api-run`, and `web-app`.
 
@@ -57,6 +60,7 @@ Open your web browser and navigate to the following URLs to access the frontend 
 
 ```sh
 http://localhost:8090/add
+```
 http://localhost:8090/all
 
 You should see the "Student Information Form" page where you can add new student information.
